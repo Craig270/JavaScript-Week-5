@@ -2,9 +2,7 @@
 
 //this app takes is for stocking and unstocking a vitural candy-store shelf that can only hold 10 products before needing to add another shelf.
 
-// 4 types of candy. 1) Hard 2) Chocolate
-// 3)Gummy  4) Beverage
-
+///SHelves are the team and the Candy is the players from the video. Think of it that way.
 class CandyProduct {
   constructor(name) {
     this.name = name;
@@ -86,11 +84,15 @@ class Menu extends TenItemShelf {
   showMainMenu() {
     return prompt(`
             0) exit
-            1) create new team
-            2) view team
-            3) delete team
-            4) display all teams
+            1) create new shelf
+            2) view shelf
+            3) delete shelf
+            4) show all shelves
           `);
+  }
+
+  creatNewShelf() {
+    shelfName = prompt(`What do you want to call this shelf?`);
   }
 
   createNewCandy() {
