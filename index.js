@@ -6,35 +6,95 @@
 // 3)Gummy  4) Beverage
 
 class CandyProduct {
-  constructor(name, type) {
+  constructor(name) {
     this.name = name;
-    this.type = type;
   }
   describe() {
     console.log(
-      `This candy is, ${this.name}. ${this.name} is a ${this.type}type of candy`
+      `This candy is, ${this.name}. ${this.name} is a ${this.type} type of candy.`
     );
-    return this.name, this.type;
   }
 }
-
-let skittles = new CandyProduct("skittles", "hard candy");
-
-//If you are creating a new shelf you need to put at least 1 item on it. Or you shouldn't be creating a new shelf.
 
 class TenItemShelf {
-  constructor(CandyProduct) {
-    this.heldItems = [newItemOne];
+  constructor() {
+    this.heldCandyObjects = [];
   }
   itemsOnShelf() {
-    console.log(
-      `This is the items on shelf function for saying how many items are on the shelf.`
+    for (let candyObject of this.heldCandyObjects) {
+      console.log(candyObject);
+    }
+  }
+  addCandyProduct(candyBeingAdded) {
+    if (candyBeingAdded instanceof CandyProduct) {
+      this.TenItemShelf.heldCandyObjects.push(candyBeingAdded);
+    } else {
+      throw new Error(
+        `You can only add instance of CandyProduct. Argument is not an instance of CandyProduct: ${CandyProduct}`
+      );
+    }
+  }
+  removeCandyProduct(candyToRemove) {
+    let candyToBeRemoved = this.heldCandyObjects.find(
+      (element) => element == candyToRemove
     );
+    deleteHere = this.heldCandyObjects.indexOf(candyToBeRemoved);
+    let nuked = this.heldCandyObjects.splice(deleteHere, 1);
+    console.log(`You have removed ${nuked} from your candy shelf `);
   }
 }
 
-skittles.describe();
+// skittles.describe();
+// let shelf1 = new TenItemShelf();
 
-class Menu {
-  constructor() {}
+// //creating 10 candy objects from the CandyProduc class
+// let skittles = new CandyProduct("skittles", "hard candy");
+// let mm =
+// let snikers =
+// let twix =
+
+class Menu extends TenItemShelf {
+  constructor() {
+    this.candyProduct = [];
+    this.selectedShelf = null;
+  }
+
+  start() {
+    let selection = this.showMainMenu();
+    while (selection != 0) {
+      switch (selection) {
+        case "1":
+          this.createTeam();
+          break;
+        case "2":
+          this.viewTeam();
+          break;
+        case "3":
+          this.deleteTeam();
+          break;
+        case "4":
+          this.displayTeams();
+          break;
+        default:
+          selection = 0;
+      }
+      selection = this.showMainMenu();
+    }
+    alert(`Goodbye!`);
+  }
+
+  showMainMenu() {
+    return prompt(`
+            0) exit
+            1) create new team
+            2) view team
+            3) delete team
+            4) display all teams
+          `);
+  }
+
+  createNewCandy() {
+    let name = prompt(`Enter name for new candy you are adding`);
+    this.teams.push(new CandyProduct(name));
+  }
 }
