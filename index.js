@@ -137,5 +137,12 @@ class Menu {
   }
 }
 
-let starter = new Menu();
-starter.startApp();
+let skittles = new Product("skittles");
+let iceCream = new Product("ice cream");
+let milk = new Product("milk");
+let shelf1 = new StoreShelf("foods");
+shelf1.addProduct(skittles);
+shelf1.addProduct(iceCream);
+shelf1.addProduct(milk);
+console.log(shelf1.products[2]);
+console.log("milk" in shelf1.products[2]);
