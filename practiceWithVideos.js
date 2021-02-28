@@ -119,8 +119,8 @@ class Team {
 
 class Menu {
   constructor() {
-    this.teams = [];
-    this.selected = null;
+    this.teams = []; //onSalesFloorShelves
+    this.selectedTeam = null; //currentSelection
   }
   start() {
     let selection = this.showMainMenuOptions();
@@ -164,13 +164,6 @@ class Menu {
   ${teamInfo}`);
   }
 
-  displayTeams() {
-    let teamString = "";
-    for (let i = 0; i < this.teams.length; i++) {
-      teamString += i + ") " + this.teams[i].name + " \n";
-    }
-    alert(teamString);
-  }
   createTeam() {
     let name = prompt(`Enter name for new team`);
     this.teams.push(new Team(name));
@@ -209,11 +202,20 @@ class Menu {
     }
   }
 
+  displayTeams() {
+    let teamString = "";
+    for (let i = 0; i < this.teams.length; i++) {
+      teamString += i + ") " + this.teams[i].name + " \n";
+    }
+    alert(teamString);
+  }
+
   createPlayer() {
     let name = prompt(`Enter name for new player:`);
     let position = prompt(`Enter position for new player:`);
     this.selectedTeam.players.push(new Player(name, position));
   }
+
   deletPlayer() {
     let index = prompt("Enter the index of the player you wish to delete:");
     if (index > -1 && index < this.selectedTeam.players.length) {
@@ -224,3 +226,33 @@ class Menu {
 
 let menu = new Menu();
 menu.start();
+
+
+
+
+
+
+
+startApp() {
+  let selection = this.showMainMenu();
+  while (selection != 0) {
+    switch (selection) {
+      case "1":
+        this.createShelf();
+        break;
+      case "2":
+        this.viewShelf();
+        break;
+      case "3":
+        this.deleteShelf();
+        break;
+      case "4":
+        this.listShelves();
+        break;
+      default:
+        selection = 0;
+    }
+    selection = this.showMainMenu();
+  }
+  alert(`Thank you for visiting our virtual store builder!!`);
+}

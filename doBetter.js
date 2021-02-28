@@ -1,7 +1,5 @@
 "use strict";
 
-//this app takes is for stocking and unstocking a vitural department store. You create a shelf then decide where in the store(location) that shelf is going to go. I put shelves in the electronics, foods and clothing department when I tested it. Feel free to make whatever store you want stocked with whatever products you want!
-
 class Product {
   constructor(name) {
     this.name = name;
